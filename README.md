@@ -239,5 +239,5 @@ Visit the application in your browser:
 
 ## 💬 Support & Inquiries
 For questions, support, or feedback:
-- **Email**: hello@ccube.dev
+- **Email**: quest.edu.pk
 - **Campus**: QUEST NAWABSHAH 
