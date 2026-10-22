@@ -240,4 +240,4 @@ Visit the application in your browser:
 ## 💬 Support & Inquiries
 For questions, support, or feedback:
 - **Email**: hello@ccube.dev
-- **Campus**: FAST NUCES Lahore / C Cube Innovation Hub
+- **Campus**: QUEST NAWABSHAH 
