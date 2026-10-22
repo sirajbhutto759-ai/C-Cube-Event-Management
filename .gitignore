@@ -1,0 +1,17 @@
+# Uploads & User generated content (keep folder structure)
+uploads/event-banners/*
+!uploads/event-banners/.gitkeep
+uploads/payment-receipts/*
+!uploads/payment-receipts/.gitkeep
+
+# Environment & IDE
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+scratch/
+.system_generated/

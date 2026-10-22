@@ -1,0 +1,173 @@
+/* ============================================================
+   C Cube – Dashboard CSS (extends style.css)
+   ============================================================ */
+
+/* ─── Dashboard page shell ───────────────────────────────────── */
+body.dashboard-body { background: #06060f; }
+
+/* Mobile sidebar toggle */
+.sidebar-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6); z-index: 200;
+}
+.sidebar-overlay.open { display: block; }
+.mobile-sidebar-toggle {
+  display: none;
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 201;
+  width: 48px; height: 48px;
+  background: var(--grad-primary); border: none; border-radius: 50%;
+  color: #fff; font-size: 1.1rem; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(108,99,255,0.5);
+}
+@media (max-width: 900px) {
+  .mobile-sidebar-toggle { display: flex; align-items: center; justify-content: center; }
+  .sidebar {
+    position: fixed; left: -280px; top: 0; height: 100vh;
+    z-index: 201; transition: left 0.35s ease;
+    width: 260px; padding-top: 5rem;
+  }
+  .sidebar.open { left: 0; }
+}
+
+/* ─── Sidebar profile card ───────────────────────────────────── */
+.sidebar-profile {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 1.25rem 1.25rem;
+  border-bottom: 1px solid var(--clr-border);
+  margin-bottom: 0.5rem;
+}
+.sidebar-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--grad-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.sidebar-user-name  { font-size: 0.875rem; font-weight: 600; color: var(--clr-white); }
+.sidebar-user-role  { font-size: 0.75rem; color: var(--clr-text-faint); }
+
+/* ─── Quick action buttons ───────────────────────────────────── */
+.quick-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+
+/* ─── Activity list ──────────────────────────────────────────── */
+.activity-list { display: flex; flex-direction: column; gap: 0; }
+.activity-item {
+  display: flex; align-items: flex-start; gap: 0.85rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.activity-item:last-child { border-bottom: none; }
+.activity-icon {
+  width: 34px; height: 34px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; flex-shrink: 0;
+}
+.activity-title { font-size: 0.875rem; font-weight: 500; color: var(--clr-text); }
+.activity-time  { font-size: 0.75rem; color: var(--clr-text-faint); margin-top: 0.15rem; }
+
+/* ─── Section headings inside dashboard ─────────────────────── */
+.dash-section { margin-bottom: 2rem; }
+.dash-section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.dash-section-title { font-size: 1rem; font-weight: 700; color: var(--clr-white); }
+
+/* ─── Registration row cards ─────────────────────────────────── */
+.reg-card {
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;
+  justify-content: space-between;
+  transition: all var(--transition);
+  margin-bottom: 0.75rem;
+}
+.reg-card:hover { border-color: var(--clr-border-2); box-shadow: var(--shadow-glow-sm); }
+.reg-card-info { flex: 1; min-width: 200px; }
+.reg-card-title { font-size: 0.95rem; font-weight: 700; color: var(--clr-white); margin-bottom: 0.25rem; }
+.reg-card-ref   { font-size: 0.78rem; color: var(--clr-text-faint); font-family: monospace; }
+.reg-card-meta  { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.reg-card-meta span { font-size: 0.8rem; color: var(--clr-text-muted); display: flex; align-items: center; gap: 0.35rem; }
+.reg-card-meta i { color: var(--clr-primary-2); font-size: 0.75rem; }
+.reg-card-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+/* ─── Payment submission box ────────────────────────────────── */
+.payment-box {
+  background: rgba(108,99,255,0.05);
+  border: 1px solid rgba(108,99,255,0.2);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-top: 1.25rem;
+}
+.payment-instructions {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  font-size: 0.875rem; color: var(--clr-text-muted);
+  white-space: pre-wrap; line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+/* ─── Notifications list ─────────────────────────────────────── */
+.notif-list { display: flex; flex-direction: column; gap: 0.5rem; }
+.notif-item {
+  background: var(--clr-bg-card);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex; gap: 0.85rem;
+  transition: all var(--transition);
+}
+.notif-item.unread { border-color: rgba(108,99,255,0.25); background: rgba(108,99,255,0.05); }
+.notif-dot-indicator { width: 8px; height: 8px; border-radius: 50%; background: var(--clr-primary); margin-top: 0.3rem; flex-shrink: 0; }
+.notif-title   { font-size: 0.875rem; font-weight: 600; color: var(--clr-white); margin-bottom: 0.25rem; }
+.notif-message { font-size: 0.82rem; color: var(--clr-text-muted); }
+.notif-time    { font-size: 0.75rem; color: var(--clr-text-faint); margin-top: 0.3rem; }
+
+/* ─── Admin table actions ────────────────────────────────────── */
+.action-btns { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.btn-icon {
+  width: 32px; height: 32px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--clr-border);
+  background: transparent; cursor: pointer;
+  font-size: 0.8rem; color: var(--clr-text-muted);
+  transition: all var(--transition);
+  text-decoration: none;
+}
+.btn-icon:hover { background: rgba(255,255,255,0.06); color: var(--clr-white); }
+.btn-icon.btn-icon-danger:hover  { border-color: var(--clr-red);   color: #f87171; background: rgba(239,68,68,0.1); }
+.btn-icon.btn-icon-success:hover { border-color: var(--clr-green); color: #4ade80; background: rgba(34,197,94,0.1); }
+.btn-icon.btn-icon-primary:hover { border-color: var(--clr-primary); color: var(--clr-primary-2); background: rgba(108,99,255,0.1); }
+
+/* ─── Filter bar ─────────────────────────────────────────────── */
+.filter-bar { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.25rem; }
+.filter-bar select { min-width: 160px; padding: 0.55rem 0.9rem; }
+
+/* ─── Audit log table ────────────────────────────────────────── */
+.audit-action { font-family: monospace; font-size: 0.8rem; color: var(--clr-accent); }
+.audit-details { font-size: 0.78rem; color: var(--clr-text-faint); max-width: 280px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ─── Receipt viewer ─────────────────────────────────────────── */
+.receipt-thumb { max-width: 200px; max-height: 200px; border-radius: var(--radius-md); border: 1px solid var(--clr-border); cursor: pointer; }
+.receipt-pdf-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--clr-primary-2); }
+
+/* ─── Charts placeholder ─────────────────────────────────────── */
+.chart-placeholder {
+  background: var(--clr-bg-card); border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg); padding: 2rem;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--clr-text-faint); font-size: 0.875rem;
+  min-height: 200px;
+}
+
+/* ─── Settings form ──────────────────────────────────────────── */
+.settings-section {
+  background: var(--clr-bg-card); border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg); padding: 1.75rem; margin-bottom: 1.5rem;
+}
+.settings-section-title { font-size: 1rem; font-weight: 700; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--clr-border); }

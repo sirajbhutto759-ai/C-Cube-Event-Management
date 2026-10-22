@@ -1,0 +1,163 @@
+/* ============================================================
+   C Cube – Animations CSS
+   ============================================================ */
+
+/* ─── Keyframes ──────────────────────────────────────────────── */
+@keyframes fadeInUp    { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeInDown  { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeInLeft  { from { opacity:0; transform:translateX(-30px); } to { opacity:1; transform:translateX(0); } }
+@keyframes fadeInRight { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:translateX(0); } }
+@keyframes fadeIn      { from { opacity:0; } to { opacity:1; } }
+@keyframes scaleIn     { from { opacity:0; transform:scale(0.9); } to { opacity:1; transform:scale(1); } }
+@keyframes slideDown   { from { opacity:0; transform:translateY(-10px); } to { opacity:1; transform:translateY(0); } }
+@keyframes pulse       { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+@keyframes float       { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+@keyframes rotate-slow { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+@keyframes gradient-shift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+@keyframes blob {
+  0%,100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50%      { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+@keyframes count-up { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+@keyframes border-glow {
+  0%,100% { box-shadow: 0 0 15px rgba(108,99,255,0.3); }
+  50%      { box-shadow: 0 0 30px rgba(108,99,255,0.6), 0 0 60px rgba(0,212,255,0.15); }
+}
+
+/* ─── Scroll Reveal ──────────────────────────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+[data-reveal="left"]  { transform: translateX(-30px); }
+[data-reveal="right"] { transform: translateX(30px); }
+[data-reveal="scale"] { transform: scale(0.92); }
+[data-reveal].revealed {
+  opacity: 1;
+  transform: translate(0) scale(1);
+}
+
+/* Staggered children reveal */
+[data-reveal-stagger] > * {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+[data-reveal-stagger].revealed > * { opacity: 1; transform: translateY(0); }
+[data-reveal-stagger].revealed > *:nth-child(1) { transition-delay: 0s; }
+[data-reveal-stagger].revealed > *:nth-child(2) { transition-delay: 0.1s; }
+[data-reveal-stagger].revealed > *:nth-child(3) { transition-delay: 0.2s; }
+[data-reveal-stagger].revealed > *:nth-child(4) { transition-delay: 0.3s; }
+[data-reveal-stagger].revealed > *:nth-child(5) { transition-delay: 0.4s; }
+[data-reveal-stagger].revealed > *:nth-child(6) { transition-delay: 0.5s; }
+
+/* ─── Animated Background Gradient ──────────────────────────── */
+.animated-gradient-bg {
+  background: linear-gradient(
+    270deg,
+    #080818, #0d0d22, #130d33, #0a1628, #080818
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 12s ease infinite;
+}
+
+/* ─── Hero floating shapes ───────────────────────────────────── */
+.hero-shape {
+  position: absolute; border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+.hero-shape-1 {
+  width: 80px; height: 80px;
+  top: 20%; right: 15%;
+  background: rgba(108,99,255,0.15);
+  border: 1px solid rgba(108,99,255,0.25);
+  animation-delay: 0s;
+}
+.hero-shape-2 {
+  width: 50px; height: 50px;
+  top: 60%; right: 30%;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  animation-delay: -2s;
+}
+.hero-shape-3 {
+  width: 100px; height: 100px;
+  top: 35%; right: 5%;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background: rgba(168,85,247,0.1);
+  animation: blob 8s ease-in-out infinite, float 7s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+/* ─── Animated Border ────────────────────────────────────────── */
+.animated-border { animation: border-glow 3s ease-in-out infinite; }
+
+/* ─── Shimmer Skeleton ───────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+/* ─── Particle grid (hero decor) ─────────────────────────────── */
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(108,99,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108,99,255,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 0%, black 30%, transparent 100%);
+}
+
+/* ─── Button hover ripple ────────────────────────────────────── */
+.btn { overflow: hidden; }
+.btn .ripple {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  transform: scale(0);
+  animation: ripple-out 0.6s linear;
+  pointer-events: none;
+}
+@keyframes ripple-out {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ─── Glowing text ───────────────────────────────────────────── */
+.glow-text {
+  text-shadow: 0 0 20px rgba(108,99,255,0.5), 0 0 40px rgba(108,99,255,0.2);
+}
+
+/* ─── Card hover glow pulse ──────────────────────────────────── */
+.event-card:hover .event-card-banner-placeholder i {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* ─── Page transition ────────────────────────────────────────── */
+.page-enter {
+  animation: fadeIn 0.4s ease;
+}
+
+/* ─── Dashboard counter animation ───────────────────────────── */
+.counter-value {
+  display: inline-block;
+  animation: count-up 0.5s ease forwards;
+}
+
+/* ─── Reduced motion overrides ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], [data-reveal-stagger] > * {
+    opacity: 1 !important; transform: none !important; transition: none !important;
+  }
+  .hero-shape, .hero-orb, .animated-gradient-bg, .skeleton { animation: none !important; }
+}
